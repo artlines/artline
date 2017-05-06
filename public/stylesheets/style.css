@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+li{
+  list-style: none;
+}
+.users{
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.user{
+  width: 33%;
+  border: 1px dashed #ccc;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+@media screen and (max-width: 960px) {
+  .user{
+    width: 50%;
+    margin: 1%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .users {
+    flex-direction: column;
+  }
+  .user{
+    width: 100%;
+    margin: 2%;
+  }
+}
