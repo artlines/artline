@@ -3,9 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div#id
   div.users
     - each user in users
       div.user
         - each val, key in user
           li #{key}: #{val}
-
+  div.fields
+    - each field in fields
+      div.field
+        - each val, key in field
+          li #{key}: #{val}
