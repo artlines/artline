@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div.users
+    - each user in users
+      div.user
+        - each val, key in user
+          li #{key}: #{val}
+

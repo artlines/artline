@@ -1,15 +1,13 @@
 var mysql = require('mysql');
-
 var PRODUCTION_DB = 'artline';
 var TEST_DB = 'test_artline';
-
-exports.MODE_TEST = 'mode_test';
-exports.MODE_PRODUCTION = 'mode_production';
-
 var state = {
   pool: null,
   mode: null
 }
+
+exports.MODE_TEST = 'mode_test';
+exports.MODE_PRODUCTION = 'mode_production';
 
 exports.connect = function(mode, done) {
   state.pool = mysql.createPool({
@@ -20,9 +18,9 @@ exports.connect = function(mode, done) {
   });
 
   state.mode = mode;
-  done()
+  done();
 }
 
 exports.get = function() {
-  return state.pool
+  return state.pool;
 }
