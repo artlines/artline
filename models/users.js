@@ -1,6 +1,6 @@
 var db = require('../db');
 
-exports.create = function(userId, text, done) {
+module.exports.create = function(userId, text, done) {
   var values = [userId, text, new Date().toISOString()]
 
   db.get().query('INSERT INTO comments (user_id, text, date) VALUES(?, ?, ?)', values, function(err, result) {
@@ -9,7 +9,41 @@ exports.create = function(userId, text, done) {
   })
 }
 
-exports.getAll = function(done) {
+module.exports.getAll = function(done) {
+  db.get().query('SELECT * FROM users', function (err, rows) {
+    if (err) return done(err);
+    done(null, rows)
+  })
+}
+var db = require('../db');
+
+module.exports.create = function(userId, text, done) {
+  var values = [userId, text, new Date().toISOString()]
+
+  db.get().query('INSERT INTO comments (user_id, text, date) VALUES(?, ?, ?)', values, function(err, result) {
+    if (err) return done(err);
+    done(null, result.insertId)
+  })
+}
+
+module.exports.getAll = function(done) {
+  db.get().query('SELECT * FROM users', function (err, rows) {
+    if (err) return done(err);
+    done(null, rows)
+  })
+}
+var db = require('../db');
+
+module.exports.create = function(userId, text, done) {
+  var values = [userId, text, new Date().toISOString()]
+
+  db.get().query('INSERT INTO comments (user_id, text, date) VALUES(?, ?, ?)', values, function(err, result) {
+    if (err) return done(err);
+    done(null, result.insertId)
+  })
+}
+
+module.exports.getAll = function(done) {
   db.get().query('SELECT * FROM users', function (err, rows) {
     if (err) return done(err);
     done(null, rows)
