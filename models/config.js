@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+<<<<<<< HEAD
 
 var PRODUCTION_DB = 'artline';
 var TEST_DB = 'test_artline';
@@ -26,3 +27,21 @@ exports.connect = function(mode, done) {
 exports.get = function() {
   return state.pool
 }
+=======
+var db = 'artline';
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database: db
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log('You are now connected as id ' + connection.threadId);
+});
+
+connection.db = db;
+
+module.exports = connection;
+>>>>>>> 8fb300891ec25c4a5570500309f4edd4660a5c97

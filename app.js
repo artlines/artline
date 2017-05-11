@@ -5,9 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
+<<<<<<< HEAD
 var index = require('./routes/index');
 var users = require('./routes/users');
 var db = require('./db');
+=======
+var controllers = require('./controllers');
+>>>>>>> 8fb300891ec25c4a5570500309f4edd4660a5c97
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,8 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+app.use(controllers);
 
 // Connect to MySQL on start
 db.connect(db.MODE_PRODUCTION, function(err) {
