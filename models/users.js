@@ -12,6 +12,6 @@ module.exports.create = function(userId, text, done) {
 module.exports.getAll = function(done) {
   db.get().query('SELECT * FROM users', function (err, rows) {
     if (err) return done(err);
-    done(null, rows)
+    done(null, rows);
   })
 }
