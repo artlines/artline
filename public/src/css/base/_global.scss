@@ -1,6 +1,5 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
@@ -11,28 +10,15 @@ li{
 .users{
   display: flex;
   align-items: center;
-  align-content: center;
+  align-content: space-between;
+  flex-direction: column;
 }
 .user{
-  width: 33%;
   border: 1px dashed #ccc;
   margin: 20px 0;
   padding: 10px;
+  width: 100%;
 }
-
-@media screen and (max-width: 960px) {
-  .user{
-    width: 50%;
-    margin: 1%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .users {
-    flex-direction: column;
-  }
-  .user{
-    width: 100%;
-    margin: 2%;
-  }
+.mdl-grid__container{
+  max-width: 900px;
 }

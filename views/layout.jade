@@ -2,7 +2,28 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(rel='stylesheet', href='/build/css/all.css')
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
   body
-    block content
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header
+        div.mdl-layout__header-row
+          span.mdl-layout-title='artline'
+          div.mdl-layout-spacer
+          nav.mdl-navigation
+            a(href='/').mdl-navigation__link='Link'
+            a.mdl-navigation__link='Link'
+            a.mdl-navigation__link='Link'
+            a.mdl-navigation__link='Link'
+      div.mdl-layout__drawer
+        span.mdl-layout-title='artline'
+        nav.mdl-navigation
+          a.mdl-navigation__link='Link'
+          a.mdl-navigation__link='Link'
+          a.mdl-navigation__link='Link'
+          a.mdl-navigation__link='Link'
+      main.mdl-layout__content
+        div.page-content
+          block content
+    script(src='/node_modules/material-design-lite/material.min.js')

@@ -7,11 +7,11 @@ module.exports.create = function(userId, text, done) {
     if (err) return done(err);
     done(null, result.insertId)
   })
-}
+};
 
 module.exports.getAll = function(done) {
   db.get().query('SELECT * FROM users', function (err, rows) {
     if (err) return done(err);
     done(null, rows);
   })
-}
+};
