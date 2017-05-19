@@ -11,4 +11,6 @@ block content
           - each val, key in user
             li #{key}: #{val}
             i.mdi.mdi-close
-
+  h2 Edit user
+  form(method='post', action='users/create')
+    include partials/fields

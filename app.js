@@ -25,7 +25,7 @@ app.use('/', index);
 app.use('/users', users);
 
 // Connect to MySQL on start
-db.connect(db.MODE_PRODUCTION, function(err) {
+db.connect(db.config.MODE_PRODUCTION, function(err) {
   if (err) {
     console.log('Unable to connect to MySQL.');
     process.exit(1);
