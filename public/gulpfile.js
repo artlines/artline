@@ -7,17 +7,21 @@ include = require("gulp-include"),
 cssmin = require('gulp-clean-css'),
 sourcemaps = require('gulp-sourcemaps'),
 imagemin = require('gulp-imagemin'),
+babelify   = require('babelify'),
+browserify = require('browserify'),
+source = require('vinyl-source-stream'),
+buffer  = require('vinyl-buffer'),
 rimraf = require('rimraf');
 
 var path = {
   build: {
-    js: 'build/js/',
+    js: './build/js/',
     css: 'build/css/',
     img: 'build/img/',
     fonts: 'build/fonts/'
   },
   src: {
-    js: 'src/js/main.js',
+    js: './src/js/main.js',
     style: 'src/css/all.scss',
     img: 'src/img/**/*.*',
     fonts: 'src/fonts/**/*.*'
@@ -36,9 +40,16 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('js:build', function () {
-  gulp.src(path.src.js)
+  return browserify({
+    entries: path.src.js, debug: true
+  })
+    .transform(babelify.configure({
+    presets: ["es2015"]
+    }))
+    .bundle()
+    .pipe(source('main.js'))
+    .pipe(buffer())
     .pipe(sourcemaps.init())
-    .pipe(include())
     .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(path.build.js))

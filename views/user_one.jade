@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div.mdl-grid.mdl-grid__container
+    div.mdl-cell.mdl-cell--12-col
+      h1= title
+      p Welcome to #{title}
+    div.user_wrapper.mdl-cell.mdl-cell--12-col
+      div.user
+        form(method='post', action='/users/edit/'+user.id)#form
+          - each val, key in user
+            div
+              label #{key}:
+                input(name=key, value=val)
+          div
+            input(type='submit', value='сохранить')
+      a(href='/users/delete/' + user.id)
+        i.material-icons close

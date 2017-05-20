@@ -7,10 +7,12 @@ block content
       p Welcome to #{title}
     div.users.mdl-cell.mdl-cell--12-col
       - each user in users
-        div.user
-          - each val, key in user
-            li #{key}: #{val}
-            i.mdi.mdi-close
+        a(href='/users/get/'+user.id)
+          div.user
+            - each val, key in user
+              li #{key}: #{val}
+        a(href='/users/delete/' + user.id)
+          i.material-icons close
   h2 Edit user
-  form(method='post', action='users/create')
+  form(method='post', action='users/create')#form
     include partials/fields
