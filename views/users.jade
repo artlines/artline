@@ -14,5 +14,5 @@ block content
         a(href='/users/delete/' + user.id)
           i.material-icons close
   h2 Edit user
-  form(method='post', action='users/create')#form
+  form(method='post', action='users/create', name='userCreate')
     include partials/fields
