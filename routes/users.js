@@ -12,10 +12,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.all('/create', function(req, res, next) {
-  console.log(req.body);
+  if (!req.body) res.send('create user failed!');
   users.create(req.body, function (err, result) {
     if(err) console.log(err);
-    res.send('user created!'+util.inspect(result));
+    res.send('user created with id: ' + result);
   });
 });
 
