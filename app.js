@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var index = require('./routes/index');
 var users = require('./routes/users');
+var events = require('./routes/events');
 var db = require('./db');
 
 // view engine setup
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/events', events);
 
 // Connect to MySQL on start
 db.connect(db.config.MODE_PRODUCTION, function(err) {
