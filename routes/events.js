@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var events = require('../models/events');
+var events = require('../models/vk_api');
 
 /** GET events listing.
  *@todo - форма поиска и подставление значений по user_id
@@ -12,6 +12,12 @@ var events = require('../models/events');
  * */
 router.get('/', function(req, res, next) {
   //form + events.getByUserId (session_id === user_id)
+  events.getAllGroups(function (err, result) {
+    if(err) console.log(err);
+    //res.render('events', {title: 'Yeah, artline', users: result});
+    res.send(result);
+
+  });
 });
 
 router.post('/get', function(req, res, next) {

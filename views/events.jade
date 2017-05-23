@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div.mdl-grid.mdl-grid__container
+    div.mdl-cell.mdl-cell--12-col
+      h1= title
+      p Welcome to #{title}
+    div.users.mdl-cell.mdl-cell--12-col
+      - each user in users
+          div.user
+            - each val, key in user
+              li #{key}: #{val}
