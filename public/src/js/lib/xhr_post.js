@@ -7,8 +7,7 @@ function xhrPost(data, url){
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       userCreateForm.insertAdjacentHTML('afterend', '<p class="error-message">' + xhr.responseText + '</p>')
-    }
-    ;
+    };
   }
   xhr.send(dataJSON);
 }

@@ -7,11 +7,6 @@ module.exports.proccessForm = (form, done) => {
     });
   });
 
-  var params = $(obj).serializeArray();
-  $.each(params, function (i, val) {
-    formData.append(val.name, val.value);
-  });
-
   return formData;
 };
 
