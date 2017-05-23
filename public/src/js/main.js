@@ -4,7 +4,7 @@ const userCreateForm = document.forms.userCreate;
 const userCreateSubmit = userCreateForm.userCreateSubmit;
 
 // Свежая кровь
-userCreateSubmit.addEventListener('click',(e) => {
+userCreateSubmit.addEventListener('click', e =>
   let inputs = userCreateForm.elements;
   let url = "users/create";
   let data = formValidation(inputs);
@@ -13,5 +13,6 @@ userCreateSubmit.addEventListener('click',(e) => {
     e.preventDefault();
   }else {
     xhrPost(data.checked, url);
-  }
+  };
 });
+

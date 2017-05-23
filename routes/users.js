@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.all('/create', function(req, res, next) {
+router.post('/create', function(req, res, next) {
   if (!req.body) res.send('create user failed!');
   users.create(req.body, function (err, result) {
     if(err) console.log(err);
