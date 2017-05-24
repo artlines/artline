@@ -4,47 +4,25 @@ const API_VER = '5.64';
 const https = require('https');
 const querystring = require('querystring');
 
-function requestToApiVk(method, options) {
+module.exports.requestToApiVk = (method, options, done) => {
   const parameters = querystring.stringify(options);
   const query = `${parameters}&access_token=${TOKEN}&v=${API_VER}`;
-  let data = {};
 
-    https.get(`${URL+method}?${query}`, (res) => {
+  https.get(`${URL+method}?${query}`, (res) => {
     const { statusCode } = res;
-
-    let error;
     let rawData = '';
     if (statusCode !== 200) {
-      error = new Error(`Request Failed.\n` +
-        `Status Code: ${statusCode}`);
       console.error(error.message);
-      // consume response data to free up memory
       res.resume();
       return;
     }
     res.setEncoding('utf8');
     res.on('data', (chunk) => rawData += chunk);
     res.on('end', () => {
-      try {
-        const parsedData = JSON.parse(rawData);
-        console.log(parsedData);
-        data = parsedData;
-      } catch (e) {
-          console.error(e.message);
-        }
+        let data = JSON.parse(rawData);
+        done(data);
       });
   }).on('error', (e) => {
       console.error(`Got error: ${e.message}`);
   });
-}
-
-module.exports.getAllGroups = (done) => {
-  const options = {
-    'user_id':'253848163',
-    'count':5,
-    'extended':1,
-    //'fields': 'city, country, place, description, wiki_page, members_count, counters, start_date, finish_date, can_post, can_see_all_posts, activity, status, contacts, links'
-  };
-  let data = requestToApiVk('groups.get', options);
-  done(null, data);
 }

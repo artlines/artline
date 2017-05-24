@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var events = require('../models/vk_api');
+var events = require('../models/events');
 
 /** GET events listing.
  *@todo - форма поиска и подставление значений по user_id

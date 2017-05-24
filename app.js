@@ -27,13 +27,13 @@ app.use('/users', users);
 app.use('/events', events);
 
 // Connect to MySQL on start
-db.connect(db.config.MODE_PRODUCTION, function(err) {
+/*db.connect(db.config.MODE_PRODUCTION, function(err) {
   if (err) {
     console.log('Unable to connect to MySQL.');
     process.exit(1);
   }
   console.log('start mysql');
-});
+});*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
