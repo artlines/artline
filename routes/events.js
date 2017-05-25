@@ -10,9 +10,9 @@ var events = require('../models/events');
  * если есть авторизация через вк - возможность добавить событие в список, получать уведомления из вк и т.п.
  * Можно поискать без регистрации (анонимный поиск в базе)
  * */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   //form + events.getByUserId (session_id === user_id)
-  events.getAllGroups(function (err, result) {
+  events.getAllGroups( (err, result) => {
     if(err) console.log(err);
     //res.render('events', {title: 'Yeah, artline', users: result});
     res.send(result);
@@ -20,15 +20,15 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/get', function(req, res, next) {
+router.post('/get', (req, res, next) => {
   //events.getByKeys + list render + events.create
 });
 
-router.post('/set', function(req, res, next) {
+router.post('/set', (req, res, next) => {
   //events.set перебор и добавление в избранное с оповещением
 });
 
-router.get('/get/:id', function(req, res, next) {
+router.get('/get/:id', (req, res, next) => {
   //get all description of event in modal
 });
 
