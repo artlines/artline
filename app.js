@@ -11,6 +11,10 @@ let index = require('./routes/index');
 let users = require('./routes/users');
 let events = require('./routes/events');
 let db = require('./db');
+let session_options = {
+  checkExpirationInterval: 900000,
+  expiration: 86400000,
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +33,7 @@ app.use(session({
   secret: '7cl6mpv35vjsuy9sqb63nwdr0izkemlh5ho6hfrl',
   resave: true,
   saveUninitialized: true,
-  store: new SessionStore(db.options)
+  store: new SessionStore(Object.assign(db.options, session_options))
 }));
 
 app.use('/', index);
