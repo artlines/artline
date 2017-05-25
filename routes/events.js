@@ -11,12 +11,14 @@ var events = require('../models/events');
  * Можно поискать без регистрации (анонимный поиск в базе)
  * */
 router.get('/', (req, res, next) => {
+    res.render('events', {title: 'Choose your destiny', events: result});
+});
+
+router.get('/groups', (req, res, next) => {
   //form + events.getByUserId (session_id === user_id)
   events.getAllGroups( (err, result) => {
     if(err) console.log(err);
-    //res.render('events', {title: 'Yeah, artline', users: result});
-    res.send(result);
-
+    res.render('groups', {title: 'Yeah, artline', events: result});
   });
 });
 

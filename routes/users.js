@@ -7,7 +7,7 @@ var util = require('util');
 router.get('/', (req, res, next) => {
   users.getAll((err, result) => {
     if(err) console.log(err);
-    res.render('users', {title: 'Yeah, artline', users: result});
+    res.render('users', {title: 'Yeah, artline, your session_id = ' +req.session.id, users: result});
   });
 });
 

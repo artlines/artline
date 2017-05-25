@@ -18,9 +18,9 @@ module.exports = (method, options, done) => {
     res.setEncoding('utf8');
     res.on('data', (chunk) => rawData += chunk);
     res.on('end', () => {
-        let data = JSON.parse(rawData);
-        done(null, data);
-      });
+      let data = JSON.parse(rawData);
+      done(null, data);
+    });
   }).on('error', (e) => {
       console.error(`Got error: ${e.message}`);
   });
